@@ -4,9 +4,15 @@ import 'package:flutter_shoesapp/src/widgets/custom_widgets.dart';
 class ZapatoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: CustomAppBar(
-      texto: 'For you',
+    return Scaffold(
+        body: Column(
+      children: [
+        const CustomAppBar(texto: 'For you'),
+        const SizedBox(
+          height: 20,
+        ),
+        ZapatoSizePreview(),
+      ],
     ));
   }
 }
