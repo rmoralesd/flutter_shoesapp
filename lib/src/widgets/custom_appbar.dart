@@ -8,7 +8,6 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      top: true,
       bottom: false,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -19,13 +18,13 @@ class CustomAppBar extends StatelessWidget {
             children: [
               Text(
                 texto,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              Spacer(),
-              Icon(
+              const Spacer(),
+              const Icon(
                 Icons.search,
                 size: 30,
               )
