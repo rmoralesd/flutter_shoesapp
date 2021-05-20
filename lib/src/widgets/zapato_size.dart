@@ -69,9 +69,15 @@ class _TallaZapatoCaja extends StatelessWidget {
       width: 45,
       height: 45,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            const BoxShadow(
+              color: Color(0xFFF1A23A),
+              blurRadius: 10,
+              offset: Offset(0, 5),
+            )
+          ]),
       child: Text(
         numero.toString().replaceAll('.0', ''),
         style: const TextStyle(
