@@ -25,6 +25,9 @@ class ZapatoPage extends StatelessWidget {
               ],
             ),
           ),
+        ),
+        const AgregarCarritoBoton(
+          monto: 180.0,
         )
       ],
     ));
