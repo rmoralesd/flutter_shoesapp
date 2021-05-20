@@ -71,8 +71,8 @@ class _TallaZapatoCaja extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            const BoxShadow(
+          boxShadow: const [
+            BoxShadow(
               color: Color(0xFFF1A23A),
               blurRadius: 10,
               offset: Offset(0, 5),
