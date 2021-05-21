@@ -8,8 +8,20 @@ class ZapatoDescriptionPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const ZapatoSizePreview(
-            fullScreen: true,
+          Stack(
+            children: [
+              const ZapatoSizePreview(
+                fullScreen: true,
+              ),
+              Positioned(
+                  child: FloatingActionButton(
+                child: Icon(Icons.chevron_left, color: Colors.white, size: 60),
+                onPressed: () {},
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                highlightElevation: 0,
+              ))
+            ],
           ),
           Expanded(
             child: SingleChildScrollView(
