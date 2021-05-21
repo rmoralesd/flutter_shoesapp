@@ -21,13 +21,81 @@ class ZapatoDescriptionPage extends StatelessWidget {
                         "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
                   ),
                   _MontoBuyNow(),
-                  _ColoresYMas()
+                  _ColoresYMas(),
+                  _BotonesLikeCartSettings(),
                 ],
               ),
             ),
           )
         ],
       ),
+    );
+  }
+}
+
+class _BotonesLikeCartSettings extends StatelessWidget {
+  const _BotonesLikeCartSettings({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      margin: const EdgeInsets.symmetric(vertical: 30),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          const _BotonSombreado(
+            icon: Icon(
+              Icons.star,
+              color: Colors.red,
+              size: 25,
+            ),
+          ),
+          const _BotonSombreado(
+            icon: Icon(
+              Icons.add_shopping_cart,
+              color: Colors.red,
+              size: 25,
+            ),
+          ),
+          const _BotonSombreado(
+            icon: Icon(
+              Icons.settings,
+              color: Colors.red,
+              size: 25,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _BotonSombreado extends StatelessWidget {
+  final Icon icon;
+  const _BotonSombreado({
+    Key key,
+    @required this.icon,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 55,
+      height: 55,
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black12,
+                spreadRadius: -5,
+                blurRadius: 20,
+                offset: Offset(0, 19))
+          ]),
+      child: icon,
     );
   }
 }
