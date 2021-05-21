@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shoesapp/src/helpers/helpers.dart';
 import 'package:flutter_shoesapp/src/models/zapato_model.dart';
 import 'package:flutter_shoesapp/src/widgets/custom_widgets.dart';
 import 'package:flutter_shoesapp/src/widgets/zapato_size.dart';
@@ -8,50 +9,54 @@ import 'package:provider/provider.dart';
 class ZapatoDescriptionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    cambiarStatusLight();
     return Scaffold(
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              const Hero(
-                tag: 'zapato-1',
-                child: ZapatoSizePreview(
-                  fullScreen: true,
-                ),
-              ),
-              Positioned(
-                  child: FloatingActionButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                highlightElevation: 0,
-                child: const Icon(
-                  Icons.chevron_left,
-                  color: Colors.white,
-                  size: 60,
-                ),
-              ))
-            ],
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: const [
-                  ZapatoDescripcion(
-                    titulo: 'Nike Air Max 720',
-                    descripcion:
-                        "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
+      body: SafeArea(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                const Hero(
+                  tag: 'zapato-1',
+                  child: ZapatoSizePreview(
+                    fullScreen: true,
                   ),
-                  _MontoBuyNow(),
-                  _ColoresYMas(),
-                  _BotonesLikeCartSettings(),
-                ],
-              ),
+                ),
+                Positioned(
+                    child: FloatingActionButton(
+                  onPressed: () {
+                    cambiarStatusDark();
+                    Navigator.pop(context);
+                  },
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  highlightElevation: 0,
+                  child: const Icon(
+                    Icons.chevron_left,
+                    color: Colors.white,
+                    size: 60,
+                  ),
+                ))
+              ],
             ),
-          )
-        ],
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: const [
+                    ZapatoDescripcion(
+                      titulo: 'Nike Air Max 720',
+                      descripcion:
+                          "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
+                    ),
+                    _MontoBuyNow(),
+                    _ColoresYMas(),
+                    _BotonesLikeCartSettings(),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
