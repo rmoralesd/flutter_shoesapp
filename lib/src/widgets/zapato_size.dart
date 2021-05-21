@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shoesapp/src/models/zapato_model.dart';
 import 'package:flutter_shoesapp/src/pages/zapato_desc_page.dart';
+import 'package:provider/provider.dart';
 
 class ZapatoSizePreview extends StatelessWidget {
   final bool fullScreen;
@@ -90,26 +92,38 @@ class _TallaZapatoCaja extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      width: 45,
-      height: 45,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: const [
-            BoxShadow(
-              color: Color(0xFFF1A23A),
-              blurRadius: 10,
-              offset: Offset(0, 5),
-            )
-          ]),
-      child: Text(
-        numero.toString().replaceAll('.0', ''),
-        style: const TextStyle(
-          color: Color(0xFFF1A23A),
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
+    final zapatoModel = Provider.of<ZapatoModel>(context);
+    return GestureDetector(
+      onTap: () {
+        final zapatoModel = Provider.of<ZapatoModel>(context, listen: false);
+        zapatoModel.talla = numero;
+      },
+      child: Container(
+        alignment: Alignment.center,
+        width: 45,
+        height: 45,
+        decoration: BoxDecoration(
+            color: numero == zapatoModel.talla
+                ? const Color(0xffF1A23A)
+                : Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              if (numero == zapatoModel.talla)
+                const BoxShadow(
+                  color: Color(0xFFF1A23A),
+                  blurRadius: 10,
+                  offset: Offset(0, 5),
+                )
+            ]),
+        child: Text(
+          numero.toString().replaceAll('.0', ''),
+          style: TextStyle(
+            color: numero == zapatoModel.talla
+                ? Colors.white
+                : const Color(0xFFF1A23A),
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
