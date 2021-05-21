@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shoesapp/src/pages/zapato_desc_page.dart';
+import 'package:flutter_shoesapp/src/models/zapato_model.dart';
+import 'package:flutter_shoesapp/src/pages/zapato_page.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  return runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (BuildContext context) {
+          return ZapatoModel();
+        },
+      )
+    ],
+    child: MyApp(),
+  ));
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -9,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ShoessApp',
       debugShowCheckedModeBanner: false,
-      home: ZapatoDescriptionPage(),
+      home: ZapatoPage(),
     );
   }
 }
