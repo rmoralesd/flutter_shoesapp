@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shoesapp/src/models/zapato_model.dart';
 import 'package:flutter_shoesapp/src/widgets/custom_widgets.dart';
 import 'package:flutter_shoesapp/src/widgets/zapato_size.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:provider/provider.dart';
 
 class ZapatoDescriptionPage extends StatelessWidget {
   @override
@@ -139,16 +141,25 @@ class _ColoresYMas extends StatelessWidget {
                 Positioned(
                     left: 90,
                     child: _BotonColor(
-                      color: Color(0xffC6D642),
-                      index: 4,
-                    )),
+                        color: Color(0xffC6D642),
+                        index: 4,
+                        image: 'assets/imgs/verde.png')),
                 Positioned(
                     left: 60,
-                    child: _BotonColor(color: Color(0xffFFAD29), index: 3)),
+                    child: _BotonColor(
+                        color: Color(0xffFFAD29),
+                        index: 3,
+                        image: 'assets/imgs/amarillo.png')),
                 Positioned(
                     left: 30,
-                    child: _BotonColor(color: Color(0xff2099F1), index: 2)),
-                _BotonColor(color: Color(0xff364D56), index: 1),
+                    child: _BotonColor(
+                        color: Color(0xff2099F1),
+                        index: 2,
+                        image: 'assets/imgs/azul.png')),
+                _BotonColor(
+                    color: Color(0xff364D56),
+                    index: 1,
+                    image: 'assets/imgs/negro.png'),
               ],
             ),
           ),
@@ -167,11 +178,13 @@ class _ColoresYMas extends StatelessWidget {
 class _BotonColor extends StatelessWidget {
   final Color color;
   final int index;
+  final String image;
 
   const _BotonColor({
     Key key,
     this.color,
     this.index,
+    this.image,
   }) : super(key: key);
 
   @override
@@ -179,10 +192,16 @@ class _BotonColor extends StatelessWidget {
     return FadeInLeft(
       delay: Duration(milliseconds: index * 100),
       duration: const Duration(milliseconds: 300),
-      child: Container(
-        width: 45,
-        height: 45,
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      child: GestureDetector(
+        onTap: () {
+          final zapatoModel = Provider.of<ZapatoModel>(context, listen: false);
+          zapatoModel.assetImage = image;
+        },
+        child: Container(
+          width: 45,
+          height: 45,
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        ),
       ),
     );
   }
